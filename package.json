@@ -1,0 +1,24 @@
+{
+  "name": "angular-starter-app",
+  "version": "1.0.0",
+  "description": "basic angular application",
+  "main": "index.html",
+  "scripts": {
+    "test": "npm test",
+    "start": "gulp start:es6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JakeSmith1/angular-starter.git"
+  },
+  "keywords": [
+    "angular",
+    "node"
+  ],
+  "author": "Jake Smith",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JakeSmith1/angular-starter/issues"
+  },
+  "homepage": "https://github.com/JakeSmith1/angular-starter#readme"
+}

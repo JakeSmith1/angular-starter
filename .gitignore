@@ -1,0 +1,17 @@
+node_modules/
+bower_components/
+*.log
+.DS_Store
+
+compiled/
+
+build/
+dist/
+
+logs
+*.log
+logfile
+
+.env
+
+*.txt
