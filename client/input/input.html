@@ -1,0 +1,14 @@
+<div class="col-lg-12">
+  <h1>Input your daily information</h1>
+
+  <form name="dailyForm" ng-submit="onSubmit(dailyForm.$valid)" novalidate> <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
+
+      <!-- NAME -->
+    <div class="form-group" ng-class="{'has-error':!dailyForm.time.$valid && (!dailyForm.time.$pristine || dailyForm.$submitted),
+     'has-success':dailyForm.time.$valid && !dailyForm.time.$pristine}">
+      <label>Time</label>
+      <input type="text" name="name" class="form-control" ng-model="dailyData.time"  usernameValidator ng-model-options="{ debounce: 250 }" required>
+      <p ng-show="dailyForm.time.$invalid && !dailyForm.time.$pristine" class="help-block">Time is required.</p>
+      <!-- <pre>{{dailyForm | json}}</pre> -->
+    </div>
+</div>

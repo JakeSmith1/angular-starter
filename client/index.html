@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Angular Starter</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body ng-app='app'>
+  <!-- form witout angular-auto-validate -->
+      <div class="col-sm-8 col-sm-offset-2">
+
+      <!-- PAGE HEADER -->
+      <div class="page-header"><h1>AngularJS Form Validation</h1></div>
+
+      <!-- FORM -->
+      <!-- pass in the variable if our form is valid or invalid -->
+      <form ng-controller="form" name="userForm" ng-submit="onSubmit(userForm.$valid)" novalidate> <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
+
+          <!-- NAME -->
+        <div class="form-group" ng-class="{'has-error':!userForm.name.$valid && (!userForm.name.$pristine || userForm.$submitted),
+         'has-success':userForm.name.$valid && !userForm.name.$pristine}">
+          <label>Name</label>
+          <input type="text" name="name" class="form-control" ng-model="userdata.name"  usernameValidator ng-model-options="{ debounce: 250 }" required>
+          <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block">You name is required.</p>
+          <!-- <pre>{{userForm | json}}</pre> -->
+        </div>
+
+        <!-- USERNAME -->
+        <div class="form-group" ng-class="{'has-error':!userForm.username.$valid && (!userForm.username.$pristine || userForm.$submitted),
+         'has-success':userForm.username.$valid && !userForm.username.$pristine}">
+          <label>Username</label>
+          <input type="text" name="username" class="form-control" ng-model="userdata.username" ng-minlength="3" ng-maxlength="8" required ng-model-options="{ debounce: 250 }">
+          <p ng-show="userForm.username.$error.minlength" class="help-block">Username is too short.</p>
+          <!-- <pre>{{userForm | json}}</pre> -->
+          <p ng-show="userForm.username.$error.maxlength" class="help-block">Username is too long.</p>
+        </div>
+
+        <!-- EMAIL -->
+        <div class="form-group" ng-class="{'has-error':!userForm.email.$valid && (!userForm.email.$pristine || userForm.$submitted),
+         'has-success':userForm.email.$valid && !userForm.email.$pristine}">
+          <label>Email</label>
+          <input type="email" name="email" class="form-control" ng-model="userdata.email" ng-model-options="{ debounce: 250 }" required>
+          <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
+        </div>
+
+          <!-- SUBMIT BUTTON -->
+          <button ng-disabled="userForm.$invalid" type="submit" class="btn btn-primary">Submit</button>
+
+      </form>
+
+  </div><!-- col-sm-8 -->
+
+
+<script src="./public/bundle.js"></script>
+  <!-- <script src="../node_modules/angular/angular.min.js"></script> -->
+  <!-- <script src="../node_modules/angular-ui-router/release/angular-ui-router.min.js"></script> -->
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<!-- sample form with bootstrap classes-->
+<!-- <div class="form-group">
+  <form ng-submit="onSumbit()" novalidate="novalidate" name="thisForm">
+    <div class="form-group">
+      <label class="control-label">
+        <input class="form-control" type="text" name="name">
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Last Name
+        <input class="form-control" type="text" ng-model="userdata.lname" placeholder="last name" name="lname">
+      </label>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary" type="submit">Signup</button>
+    </div>
+</form>
+<pre>thisFrom {{thisForm | json}}</pre>
+</div> -->
+
+</body>
+</html>
